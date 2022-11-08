@@ -3,17 +3,17 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.2              
 -- * Generator date: Sep 14 2021              
--- * Generation date: Tue Nov  8 15:11:28 2022 
+-- * Generation date: Tue Nov  8 15:30:16 2022 
 -- * LUN file: C:\Users\pa44ulq\Desktop\git\GesProj2-Imprimante-AGM\Alessio\Imprimante.lun 
--- * Schema: Imprimande/MLD 
+-- * Schema: db_Imprimande/MLD 
 -- ********************************************* 
 
 
 -- Database Section
 -- ________________ 
 
-create database db_Imprimante;
-use db_Imprimante;
+create database db_Imprimande;
+use db_Imprimande;
 
 
 -- Tables Section
@@ -22,17 +22,16 @@ use db_Imprimante;
 create table t_client (
      idClient int not null auto_increment,
      cliNom varchar(50) not null,
-	 cliPrenom varchar(50) not null,
+     cliPrenom varchar(50) not null,
      cliTel varchar(20) not null,
      cliAdresse char(255) not null,
-	 cliVille varchar(90) not null,
      constraint ID_t_client_ID primary key (idClient));
 
 create table t_commander (
      idClient int not null,
      idImprimante int not null,
      comDate date not null,
-     comPrix intnot null,
+     comPrix int not null,
      constraint ID_t_commander_ID primary key (idImprimante, idClient));
 
 create table t_imprimante (
@@ -40,7 +39,7 @@ create table t_imprimante (
      impHauteur int not null,
      impLargeur int not null,
      impModele varchar(50) not null,
-	 impNom varchar(50) not null,
+     impNom varchar(50) not null,
      impVitesse int not null,
      impResolution int not null,
      impRectoVerso char not null,
