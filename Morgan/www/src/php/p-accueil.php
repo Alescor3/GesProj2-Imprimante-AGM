@@ -9,9 +9,8 @@
 session_start();
 require("Database.php");
 
-$userLog = 0;
-
 $db = new Database();
+$fabriquants = $db->getAllFabrquand();
 
 
 /*
@@ -25,52 +24,72 @@ echo("<pre>");
 <link rel="stylesheet" href="../../resources/css/totalStyle.css">
    
    
-   <h2>Surnom des ensegniants</h2>
+   <h2>Liste imprimante</h2>
    <div class="title">
-      <t >Zone Pour Le Menu</t><br>
-   </div>
 
-   <div class="login">
-   <?php
-   ?>
-      <form action="userLogin.php" method="post">
-         <label for="user"> </label>
-         <input type="text" name="user" id="user" placeholder="Login">
-         <label for="password"> </label>
-         <input type="password" name="password" id="password" placeholder="Mot de passe">
-         <button type="submit" class="btn btn-login">Se connecter</button>
+      <form action="filtres.php" method="post">
+      <!-- PRIX
+         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
+         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
+         genr:
+         <div class="???">
+      -->
+      <label>PRIX</label>
+      <input type='text' name='priceMinValue' id='minValue' placeholder="Min">
+      <input type='text' name='priceMaxValue' id='maxValue'placeholder="Max">
+      <!-- 
+         </div>
+      -->
+      <br>
+      <!-- HAUTEUR
+         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
+         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
+         genr:
+         <div class="???">
+      -->
+      <label>HAUTEUR</label>
+      <input type='text' name='hightMinValue' id='minValue' placeholder="Min">
+      <input type='text' name='hightMaxValue' id='maxValue'placeholder="Max">
+      <!-- 
+         </div>
+      -->
+      <br>
+      <!-- LARGEUR
+         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
+         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
+         genr:
+         <div class="???">
+      -->
+      <label>LARGEUR</label>
+      <input type='text' name='withMinValue' id='minValue' placeholder="Min">
+      <input type='text' name='witheMaxValue' id='maxValue'placeholder="Max">
+      <!-- 
+         </div>
+      -->
+      <br>
+      <!-- PROFONDEUR
+         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
+         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
+         genr:
+         <div class="???">
+      -->
+      <label>PROFONDEUR</label>
+      <input type='text' name='depthMinValue' id='minValue' placeholder="Min">
+      <input type='text' name='depthMaxValue' id='maxValue'placeholder="Max">
+      <!-- 
+         </div>
+      -->
+      <br>
+      <select name="section" id="section">
+            <option value="" class="listeDeroulante">---Fabriquant---</option>
+            <?php
+               foreach($fabriquants as $fabriquant){// affiche la liste des sections de manière dynamique 
+                  echo("<option value=" . $fabriquant["idFabriquant"] . ">" . $fabriquant["fabNom"] . "</option>");// sinon on met aucune valeur par défault
+               }
+            ?>
+      </select>
+
       </form>
-   <?php
-
-   ?>
-      <form action="delog.php" method="post">
-         <button type="submit" class="btn btn-login">Se Déconecter</button>
-      </form>
    </div>
-   <?php
-   
-   ?>
-   
-   <h4>liste des ensegniants</h4>
-   <table>
-      <tr>
-         <th>Nom</th>
-         <th>Surnom</th>
-         <th>Options</th>
-      </tr>
-      
-<?php
-   
-   ?>
-</table>
-<a href="p-addcreate-Teacher.php">Ajouter un nouveau prof</a>
-<?php
-
-/*
-echo("<pre>");
-var_dump($finaly);
-echo("<pre>");
-*/
-?>
 
 
