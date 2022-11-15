@@ -1,0 +1,25 @@
+
+
+ -O- ColonneidFabriquant (MUL, int)
+
+ -=- ColonneidImprimante (PRI, int)
+
+ -X- ColonneimpBacPapier (int)
+
+ -X- ColonneimpHauteur (int)
+
+ -X- ColonneimpLargeur (int)
+
+ -X- ColonneimpModele (varchar)
+
+ -X- ColonneimpNom (varchar)
+
+ -O- ColonneimpPrix (int)
+
+ -X- ColonneimpPrixInitial (int)
+
+ -X- ColonneimpRectoVerso (char)
+
+ -X- ColonneimpResolution (int)
+
+ -X- ColonneimpVitesse (int)
