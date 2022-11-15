@@ -1,9 +1,9 @@
 -- *********************************************
--- * SQL MySQL generation                      
+-- * Standard SQL generation                   
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.2              
 -- * Generator date: Sep 14 2021              
--- * Generation date: Tue Nov  8 15:30:16 2022 
+-- * Generation date: Tue Nov 15 13:45:47 2022 
 -- * LUN file: C:\Users\pa44ulq\Desktop\git\GesProj2-Imprimante-AGM\Alessio\Imprimante.lun 
 -- * Schema: db_Imprimande/MLD 
 -- ********************************************* 
@@ -13,14 +13,17 @@
 -- ________________ 
 
 create database db_Imprimande;
-use db_Imprimande;
+
+
+-- DBSpace Section
+-- _______________
 
 
 -- Tables Section
 -- _____________ 
 
 create table t_client (
-     idClient int not null auto_increment,
+     idClient -- Sequence attribute not implemented -- not null,
      cliNom varchar(50) not null,
      cliPrenom varchar(50) not null,
      cliTel varchar(20) not null,
@@ -28,33 +31,33 @@ create table t_client (
      constraint ID_t_client_ID primary key (idClient));
 
 create table t_commander (
-     idClient int not null,
-     idImprimante int not null,
+     idClient numeric(1) not null,
+     idImprimante numeric(1) not null,
      comDate date not null,
-     comPrix int not null,
+     comPrix numeric(1) not null,
      constraint ID_t_commander_ID primary key (idImprimante, idClient));
 
-create table t_imprimante (
-     idImprimante int not null auto_increment,
-     impHauteur int not null,
-     impLargeur int not null,
-     impModele varchar(50) not null,
-     impNom varchar(50) not null,
-     impVitesse int not null,
-     impResolution int not null,
-     impRectoVerso char not null,
-     impBacPapier int not null,
-     impPrix int not null,
-     impPrixInitial int not null,
-     idFabriquant int not null,
-     constraint ID_t_imprimante_ID primary key (idImprimante));
-
 create table t_fabriquant (
-     idFabriquant int not null auto_increment,
+     idFabriquant -- Sequence attribute not implemented -- not null,
      fabNom varchar(50) not null,
      fabTel varchar(20) not null,
      fabAdresse char(255) not null,
      constraint ID_t_fabriquant_ID primary key (idFabriquant));
+
+create table t_imprimante (
+     idImprimante -- Sequence attribute not implemented -- not null,
+     impHauteur numeric(1) not null,
+     impLargeur numeric(1) not null,
+     impProfondeur numeric(1) not null,
+     impModele varchar(50) not null,
+     impNom varchar(50) not null,
+     impVitesse numeric(1) not null,
+     impRectoVerso char not null,
+     impBacPapier numeric(1) not null,
+     impPrix numeric(1) not null,
+     impPrixInitial numeric(1) not null,
+     idFabriquant numeric(1) not null,
+     constraint ID_t_imprimante_ID primary key (idImprimante));
 
 
 -- Constraints Section
@@ -62,15 +65,15 @@ create table t_fabriquant (
 
 alter table t_commander add constraint FKt_c_t_i
      foreign key (idImprimante)
-     references t_imprimante (idImprimante);
+     references t_imprimante;
 
 alter table t_commander add constraint FKt_c_t_c_FK
      foreign key (idClient)
-     references t_client (idClient);
+     references t_client;
 
 alter table t_imprimante add constraint FKt_creer_FK
      foreign key (idFabriquant)
-     references t_fabriquant (idFabriquant);
+     references t_fabriquant;
 
 
 -- Index Section
@@ -85,12 +88,12 @@ create unique index ID_t_commander_IND
 create index FKt_c_t_c_IND
      on t_commander (idClient);
 
+create unique index ID_t_fabriquant_IND
+     on t_fabriquant (idFabriquant);
+
 create unique index ID_t_imprimante_IND
      on t_imprimante (idImprimante);
 
 create index FKt_creer_IND
      on t_imprimante (idFabriquant);
-
-create unique index ID_t_fabriquant_IND
-     on t_fabriquant (idFabriquant);
 
