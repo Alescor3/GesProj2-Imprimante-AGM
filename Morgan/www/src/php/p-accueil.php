@@ -11,7 +11,7 @@ require("Database.php");
 
 $db = new Database();
 $fabriquants = $db->getAllFabrquand();
-
+$testNom = $db->nameFiltre("a");
 
 /*
 echo("<pre>");
@@ -93,3 +93,5 @@ echo("<pre>");
    </div>
 
 
+<?php
+echo($testNom);

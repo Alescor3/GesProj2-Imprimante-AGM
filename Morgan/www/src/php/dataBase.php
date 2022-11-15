@@ -60,7 +60,7 @@ class Database {
  // ---------------- retourne tout les imprimantes de la table t_imprimante ----------------//
    public function getImprimante($condition){
 
-        $req = $this->querySimpleExecute('select * from t_imprimante Where' . $condition);
+        $req = $this->querySimpleExecute('select * from t_imprimante WHERE' . $condition);
         $result = $this->formatData($req);
         return $result;
    }
@@ -72,7 +72,10 @@ class Database {
         $this->getImprimante("impPrix > $min AND impPrix < $max");
     }
 
-
+     // ---------------- retourne tout les imprimantes de la table t_imprimante ----------------//
+     public function nameFiltre($value){
+          $this->getImprimante(" impModele LIKE '%".$value."%'");
+     }
    
 
 
@@ -93,100 +96,5 @@ class Database {
           return $teacher[0];
      }
    }
-
-   //---------------- supprime un prof ----------------//
-   public function deletTeacher($id){
-     $req = $this->querySimpleExecute("DELETE FROM `t_teacher` WHERE idTeacher = $id");
-   }
-
-   //---------------- trouve la section d'un prof ----------------//
-   public function getTeacherSection($id){
-
-          $req = $this->querySimpleExecute("SELECT fkSection FROM t_teacher WHERE idTeacher = $id LIMIT 1");
-
-          $fkSection = $this->formatData($req);
-
-          $idSection = (int)$fkSection[0]["fkSection"];
-
-          $req = $this->querySimpleExecute("SELECT secName FROM t_section WHERE idSection = $idSection");
-
-          $fkSection = $this->formatData($req);
-
-          return $fkSection[0];
-
-     }
-
-     //---------------- création d'un prof ----------------//
-    public function createTeacher($Values){
-
-     $binds = [];
-
-     foreach($Values as $id => $value){
-          if ($id === "type" || $id === "btnSubmit" || $id === "idTeacher") {
-               continue;
-          }
-          $binds[$id] = array();
-          $binds[$id]["value"] = $value;
-
-          if($id == "gender"){
-               $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
-          }else if ($id == "idTeacher" || $id == "section"){
-               $binds[$id]["type"] = PDO::PARAM_INT;
-          }else {
-               $binds[$id]["type"] = PDO::PARAM_STR;
-          }
-     }
-
-     $query = "INSERT INTO `t_teacher`(`idTeacher`, `teaFirstname`, `teaName`, `teaGender`, `teaNickname`, `teaOrigine`, `fkSection`) 
-     VALUES (DEFAULT, :name, :firstname, :gender, :surname, :origin, :section)";
-
-     $this->queryPrepareExecute($query, $binds);
-     
-}
-
-     //---------------- mise a jour d'un prof ----------------//
-     public function UpdateTeacher($Values){
-          $binds = [];
-
-          foreach($Values as $id => $value){
-               if ($id === "type" || $id === "btnSubmit" || $id === "idTeacher") {
-                    continue;
-               }
-               $binds[$id] = array();
-               $binds[$id]["value"] = $value;
-
-               if($id == "gender"){
-                    $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
-               }else if ($id == "idTeacher" || $id == "section"){
-                    $binds[$id]["type"] = PDO::PARAM_INT;
-               }else {
-                    $binds[$id]["type"] = PDO::PARAM_STR;
-               }
-          }
-
-          $query = "UPDATE `t_teacher` SET `teaFirstname`= :name ,`teaName`= :firstname ,`teaGender`=:gender,`teaNickname`= :surname ,`teaOrigine`= :origin ,`fkSection`= :section 
-          WHERE idTeacher = " .  $Values['idTeacher'] . "";
-
-
-          $req = $this->queryPrepareExecute($query, $binds);
-     }
-
-     //---------------- retourne toutes les sections ----------------//
-     public function getAllSection(){
-          $req = $this->querySimpleExecute("SELECT * FROM `t_section`");
-          $section = $this->formatData($req);
-          return $section;
-     }
-
- 
- 
-     // ---------------- retourne tout les users ----------------//
-     public function getAllUser(){
-
-          $req = $this->querySimpleExecute("SELECT * FROM `t_user`");
-          $section = $this->formatData($req);
-          return $section;
-     }
-
 
 }

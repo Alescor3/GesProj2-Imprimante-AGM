@@ -2,13 +2,13 @@
 
  -O- ColonneidFabriquant (MUL, int)
 
- -=- ColonneidImprimante (PRI, int)
+ -X- ColonneidImprimante (PRI, int)
 
  -X- ColonneimpBacPapier (int)
 
- -X- ColonneimpHauteur (int)
+ -O- ColonneimpHauteur (int)
 
- -X- ColonneimpLargeur (int)
+ -O- ColonneimpLargeur (int)
 
  -X- ColonneimpModele (varchar)
 
