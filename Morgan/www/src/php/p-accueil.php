@@ -12,6 +12,8 @@ require("Database.php");
 $db = new Database();
 $fabriquants = $db->getAllFabrquand();
 $testNom = $db->nameFiltre("a");
+$models = $db->getAllModels();
+
 
 /*
 echo("<pre>");
@@ -28,59 +30,56 @@ echo("<pre>");
    <div class="title">
 
       <form action="filtres.php" method="post">
-      <!-- PRIX
-         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
-         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
-         genr:
-         <div class="???">
-      -->
-      <label>PRIX</label>
-      <input type='text' name='priceMinValue' id='minValue' placeholder="Min">
-      <input type='text' name='priceMaxValue' id='maxValue'placeholder="Max">
+
+         <select name="prixMax" id="prixMax">
+            <option value="" class="listeDeroulante">---Prix Max---</option>
+            <option value="0" class="listeDeroulante"> 0 - 200 </option>
+            <option value="200" class="listeDeroulante"> 200 - 500 </option>
+            <option value="500" class="listeDeroulante"> 500 - 1000 </option>
+            <option value="1000" class="listeDeroulante"> 1000 - 2000 </option>
+            <option value="2000" class="listeDeroulante"> 2000 + </option>
+         </select>
+
+         <br>
+
+         <select name="hauteur" id="hauteur">
+            <option value="" class="listeDeroulante">---Hauteur---</option>
+            <option value="0" class="listeDeroulante"> 0 - 25cm </option>
+            <option value="25" class="listeDeroulante"> 25 - 50cm </option>
+            <option value="50" class="listeDeroulante"> 50 - 75cm </option>
+            <option value="75" class="listeDeroulante"> 75 - 100cm </option>
+            <option value="100" class="listeDeroulante"> 100cm + </option>
+         </select>
+
+         <select name="longeur" id="longeur">
+            <option value="" class="listeDeroulante">---Longeur---</option>
+            <option value="0" class="listeDeroulante"> 0 - 25cm </option>
+            <option value="25" class="listeDeroulante"> 25 - 50cm </option>
+            <option value="50" class="listeDeroulante"> 50 - 75cm </option>
+            <option value="75" class="listeDeroulante"> 75 - 100cm </option>
+            <option value="100" class="listeDeroulante"> 100cm + </option>
+         </select>
+
+         <select name="profondeur" id="profondeur">
+            <option value="" class="listeDeroulante">---Profondeur---</option>
+            <option value="0" class="listeDeroulante"> 0 - 25cm </option>
+            <option value="25" class="listeDeroulante"> 25 - 50cm </option>
+            <option value="50" class="listeDeroulante"> 50 - 75cm </option>
+            <option value="75" class="listeDeroulante"> 75 - 100cm </option>
+            <option value="100" class="listeDeroulante"> 100cm + </option>
+         </select>
+
+         <br>
+
+         <label for="disponibilite">Seulement disponible</label>
+         <input type="checkbox" id="disponibilite" name="disponibilite">
+
+
       <!-- 
          </div>
       -->
       <br>
-      <!-- HAUTEUR
-         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
-         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
-         genr:
-         <div class="???">
-      -->
-      <label>HAUTEUR</label>
-      <input type='text' name='hightMinValue' id='minValue' placeholder="Min">
-      <input type='text' name='hightMaxValue' id='maxValue'placeholder="Max">
-      <!-- 
-         </div>
-      -->
-      <br>
-      <!-- LARGEUR
-         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
-         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
-         genr:
-         <div class="???">
-      -->
-      <label>LARGEUR</label>
-      <input type='text' name='withMinValue' id='minValue' placeholder="Min">
-      <input type='text' name='witheMaxValue' id='maxValue'placeholder="Max">
-      <!-- 
-         </div>
-      -->
-      <br>
-      <!-- PROFONDEUR
-         les deux champ dans une div avec des borders noir et les champs sans avec un tiret entre les deux 
-         en mode c'est 1 seul champ mais non et a gauche le prix minimum et a droit le prix max
-         genr:
-         <div class="???">
-      -->
-      <label>PROFONDEUR</label>
-      <input type='text' name='depthMinValue' id='minValue' placeholder="Min">
-      <input type='text' name='depthMaxValue' id='maxValue'placeholder="Max">
-      <!-- 
-         </div>
-      -->
-      <br>
-      <select name="section" id="section">
+      <select name="fabriquant" id="fabriquant">
             <option value="" class="listeDeroulante">---Fabriquant---</option>
             <?php
                foreach($fabriquants as $fabriquant){// affiche la liste des sections de manière dynamique 
@@ -89,9 +88,30 @@ echo("<pre>");
             ?>
       </select>
 
+      <br>
+
+      <select name="model" id="model">
+            <option value="" class="listeDeroulante">---Model---</option>
+            <?php
+               foreach($models as $model){// affiche la liste des sections de manière dynamique 
+                  echo("<option value=" . $model["impModele"] . ">" . $model["impModele"] . "</option>");// sinon on met aucune valeur par défault
+               }
+            ?>
+      </select>
+      <br>
+      <input type="submit" value="Submit">
       </form>
    </div>
 
 
 <?php
-echo($testNom);
+/*
+echo("<pre>");
+var_dump($models);
+echo("</pre>");
+*/
+//<a href="filtres.php">retour menu</a>
+?>
+<html>
+
+</html>

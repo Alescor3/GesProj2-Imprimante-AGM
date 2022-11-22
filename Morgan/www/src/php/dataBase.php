@@ -97,4 +97,11 @@ class Database {
      }
    }
 
+
+   public function getAllModels(){
+     $req = $this->querySimpleExecute("SELECT `impModele` FROM `t_imprimante` ORDER BY `impModele`");
+     $result = $this->formatData($req);
+     return $result;
+   }
+
 }
