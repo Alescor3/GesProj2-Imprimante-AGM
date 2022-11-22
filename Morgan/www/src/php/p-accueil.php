@@ -72,7 +72,7 @@ echo("<pre>");
          <br>
 
          <label for="disponibilite">Seulement disponible</label>
-         <input type="checkbox" id="disponibilite" name="disponibilite" checked>
+         <input type="checkbox" id="disponibilite" name="disponibilite">
 
 
       <!-- 
@@ -105,6 +105,13 @@ echo("<pre>");
 
 
 <?php
+/*
 echo("<pre>");
 var_dump($models);
 echo("</pre>");
+*/
+//<a href="filtres.php">retour menu</a>
+?>
+<html>
+
+</html>
