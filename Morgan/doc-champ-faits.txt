@@ -2,21 +2,31 @@
 
  -O- ColonneidFabriquant (MUL, int)
 
- -X- ColonneidImprimante (PRI, int)
-
- -X- ColonneimpBacPapier (int)
-
  -O- ColonneimpHauteur (int)
 
  -O- ColonneimpLargeur (int)
+
+ -O- ColonneimpPrix (int)
+
+ -O- disponible (bool)
+
+
+// -X- ColonneidImprimante (PRI, int)
+
+// -X- ColonneimpPrixInitial (int)
+
+---------------------------------------------------------------
+
+
+
+
+
+ -X- ColonneimpBacPapier (int)
 
  -X- ColonneimpModele (varchar)
 
  -X- ColonneimpNom (varchar)
 
- -O- ColonneimpPrix (int)
-
- -X- ColonneimpPrixInitial (int)
 
  -X- ColonneimpRectoVerso (char)
 
