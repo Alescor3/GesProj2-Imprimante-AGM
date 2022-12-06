@@ -107,8 +107,13 @@ class Database {
    }
 
 
-   public function AddPrinter($Values){
+   public function createRecipe($Values){
      $binds = [];
+     echo("<pre>");
+/*
+     var_dump($Values);
+     echo("<pre>");
+*/
 
      foreach($Values as $id => $value){
           
@@ -117,10 +122,11 @@ class Database {
           $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
           
      }
-     $query = "INSERT INTO `t_recette`(`idRecette`, `recName`, `recType`, `recDescription`, `recImage`,`recNbPersonne`, `recSource`) 
-     VALUES (DEFAULT, :name, :type, :description, :image, :nbPer, :source)";
+     $query = "INSERT INTO `t_imprimante`(`idImprimante`, `impHauteur`, `impLargeur`, `impProfondeur`, `impPoids`, `impModele`, `impNom`, `impVitesse`, `impRectoVerso`, `impBacPapier`, `impResolutionImpression`, `impResolutionNumerisation`, `impDisponibilite`, `impPrix`, `impPrixInitial`, `idFabriquant`) 
+     VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,:disponibility,:price,:price,:fabriquant)";
      $this->queryPrepareExecute($query, $binds);
 }
+
 
 
 }
