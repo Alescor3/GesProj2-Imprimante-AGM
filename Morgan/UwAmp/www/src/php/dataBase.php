@@ -38,6 +38,8 @@ class Database {
         return $req;
    }
 
+
+
    
      // ---------------- retourne les donnees de la base sql pour qu'elles soient utilisablees ----------------//
    private function formatData($req){
@@ -80,7 +82,7 @@ class Database {
 
 
      // ---------------- retourne tout les profs de la table t_teacher ----------------//
-   public function getAllFabrquand(){
+   public function getAllFabriquand(){
 
         $req = $this->querySimpleExecute('select idFabriquant, fabNom from t_fabriquant');
         $result = $this->formatData($req);
@@ -103,5 +105,22 @@ class Database {
      $result = $this->formatData($req);
      return $result;
    }
+
+
+   public function AddPrinter($Values){
+     $binds = [];
+
+     foreach($Values as $id => $value){
+          
+          $binds[$id] = array();
+          $binds[$id]["value"] = $value;
+          $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
+          
+     }
+     $query = "INSERT INTO `t_recette`(`idRecette`, `recName`, `recType`, `recDescription`, `recImage`,`recNbPersonne`, `recSource`) 
+     VALUES (DEFAULT, :name, :type, :description, :image, :nbPer, :source)";
+     $this->queryPrepareExecute($query, $binds);
+}
+
 
 }
