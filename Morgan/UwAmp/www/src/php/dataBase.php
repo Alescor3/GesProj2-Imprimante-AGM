@@ -38,6 +38,8 @@ class Database {
         return $req;
    }
 
+
+   
    
      // ---------------- retourne les donnees de la base sql pour qu'elles soient utilisablees ----------------//
    private function formatData($req){
