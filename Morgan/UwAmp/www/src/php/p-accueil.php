@@ -33,11 +33,11 @@ echo("<pre>");
 
          <select name="prixMax" id="prixMax">
             <option value="" class="listeDeroulante">---Prix Max---</option>
-            <option value="0" class="listeDeroulante"> 0 - 200 </option>
-            <option value="200" class="listeDeroulante"> 200 - 500 </option>
-            <option value="500" class="listeDeroulante"> 500 - 1000 </option>
-            <option value="1000" class="listeDeroulante"> 1000 - 2000 </option>
-            <option value="2000" class="listeDeroulante"> 2000 + </option>
+            <option value="0" class="listeDeroulante"> 0 - 200.- </option>
+            <option value="200" class="listeDeroulante"> 200 - 500.- </option>
+            <option value="500" class="listeDeroulante"> 500 - 1000.- </option>
+            <option value="1000" class="listeDeroulante"> 1000 - 2000.- </option>
+            <option value="2000" class="listeDeroulante"> 2000.- + </option>
          </select>
 
          <br>
