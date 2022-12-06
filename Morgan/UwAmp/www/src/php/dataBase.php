@@ -39,7 +39,7 @@ class Database {
    }
 
 
-   
+
    
      // ---------------- retourne les donnees de la base sql pour qu'elles soient utilisablees ----------------//
    private function formatData($req){
@@ -82,7 +82,7 @@ class Database {
 
 
      // ---------------- retourne tout les profs de la table t_teacher ----------------//
-   public function getAllFabrquand(){
+   public function getAllFabriquand(){
 
         $req = $this->querySimpleExecute('select idFabriquant, fabNom from t_fabriquant');
         $result = $this->formatData($req);

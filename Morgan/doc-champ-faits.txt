@@ -33,3 +33,65 @@
  -X- ColonneimpResolution (int)
 
  -X- ColonneimpVitesse (int)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
+
+
+
+
+ -X- ColonneidFabriquant (MUL, int)
+ -X-ColonneidImprimante (PRI, int)
+ -X-ColonneimpBacPapier (int)
+ -X-ColonneimpDisponibilite (char)
+ -X-ColonneimpHauteur (int)
+ -X-ColonneimpLargeur (int)
+ -X-ColonneimpModele (varchar)
+ -X-ColonneimpNom (varchar)
+ -X-ColonneimpPoids (int)
+ -X-ColonneimpPrix (int)
+ -X-ColonneimpPrixInitial (int)
+ -X-ColonneimpProfondeur (int)
+ -X-ColonneimpRectoVerso (char)
+ -X-ColonneimpResolutionImpression (varchar)
+ -X-ColonneimpResolutionNumerisation (varchar)
+ -X-ColonneimpVitesse (int)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
