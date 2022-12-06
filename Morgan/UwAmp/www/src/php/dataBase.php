@@ -106,4 +106,21 @@ class Database {
      return $result;
    }
 
+
+   public function AddPrinter($Values){
+     $binds = [];
+
+     foreach($Values as $id => $value){
+          
+          $binds[$id] = array();
+          $binds[$id]["value"] = $value;
+          $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
+          
+     }
+     $query = "INSERT INTO `t_recette`(`idRecette`, `recName`, `recType`, `recDescription`, `recImage`,`recNbPersonne`, `recSource`) 
+     VALUES (DEFAULT, :name, :type, :description, :image, :nbPer, :source)";
+     $this->queryPrepareExecute($query, $binds);
+}
+
+
 }
