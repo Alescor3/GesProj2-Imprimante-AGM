@@ -103,7 +103,7 @@ class Database {
    public function getAllModels(){
      $req = $this->querySimpleExecute("SELECT `impModele` FROM `t_imprimante` ORDER BY `impModele`");
      $result = $this->formatData($req);
-     return $result;
+     return $result;s
    }
 
 
@@ -114,16 +114,20 @@ class Database {
      var_dump($Values);
      echo("<pre>");
 */
-
+          $test = 0;
+          $binds["priceNow"] = array();
+          $binds["priceNow"]["value"] = $Values["price"];
+          $binds["priceNow"]["type"] = PDO::PARAM_INT;
      foreach($Values as $id => $value){
-          
+          $test++;
           $binds[$id] = array();
           $binds[$id]["value"] = $value;
           $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
           
      }
+     echo($test);
      $query = "INSERT INTO `t_imprimante`(`idImprimante`, `impHauteur`, `impLargeur`, `impProfondeur`, `impPoids`, `impModele`, `impNom`, `impVitesse`, `impRectoVerso`, `impBacPapier`, `impResolutionImpression`, `impResolutionNumerisation`, `impDisponibilite`, `impPrix`, `impPrixInitial`, `idFabriquant`) 
-     VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,:disponibility,:price,:price,:fabriquant)";
+     VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,:disponibility,:priceNow,:price,:fabriquant)";
      $this->queryPrepareExecute($query, $binds);
 }
 
