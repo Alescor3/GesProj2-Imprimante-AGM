@@ -111,6 +111,7 @@ class Database {
      $binds = [];
      echo("<pre>");
 /*
+
      var_dump($Values);
      echo("<pre>");
 */
