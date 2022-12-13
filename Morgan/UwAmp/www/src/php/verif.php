@@ -19,4 +19,9 @@ echo("Nombre d'erreur :" . $nberror);
 if($nberror == 0){
 
     $db->createPrinter($_POST);
+    header("Location:p-acceuil.php");
+}else{
+    header("Location:p-form.php");
+    $_SESSION["valueForm"] = $_POST;
 }
+

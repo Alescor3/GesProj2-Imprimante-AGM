@@ -69,6 +69,7 @@ class Database {
 
 
 
+
  // ---------------- retourne tout les imprimantes de la table t_imprimante ----------------//
     public function priceFiltre($max,$min){
         $this->getImprimante("impPrix > $min AND impPrix < $max");
@@ -90,12 +91,12 @@ class Database {
    }
 
    //---------------- cherche toutes les données sur un prof ----------------//
-   public function getOneTeacher($id){
+   public function getOneFabriquand($id){
 
-          $req = $this->querySimpleExecute("select * from t_teacher where idTeacher = $id");
-          $teacher = $this->formatData($req);
-          if (count($teacher) === 1) {
-               return $teacher[0];
+          $req = $this->querySimpleExecute("select * from t_fabriquant where idFabriquant = $id");
+          $builder = $this->formatData($req);
+          if (count($builder) === 1) {
+               return $builder[0];
           }
      }
      
@@ -110,11 +111,7 @@ class Database {
    public function createPrinter($Values){
      $binds = [];
      echo("<pre>");
-/*
 
-     var_dump($Values);
-     echo("<pre>");
-*/
           $test = 0;
           $binds["priceNow"] = array();
           $binds["priceNow"]["value"] = $Values["price"];
@@ -130,7 +127,15 @@ class Database {
      $query = "INSERT INTO `t_imprimante`(`idImprimante`, `impHauteur`, `impLargeur`, `impProfondeur`, `impPoids`, `impModele`, `impNom`, `impVitesse`, `impRectoVerso`, `impBacPapier`, `impResolutionImpression`, `impResolutionNumerisation`, `impDisponibilite`, `impPrix`, `impPrixInitial`, `idFabriquant`) 
      VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,:disponibility,:priceNow,:price,:fabriquant)";
      $this->queryPrepareExecute($query, $binds);
-}
+     }
+     public function getAllImprimante(){
+
+          $req = $this->querySimpleExecute('select * from t_imprimante');
+          $result = $this->formatData($req);
+          return $result;
+     }
+  
+
 
 
 

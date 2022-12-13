@@ -50,6 +50,6 @@ class __TwigTemplate_644fb2707b469a271b88677a5cd30f00c9cb03a5026bf39ca956ec4551e
 
     public function getSourceContext()
     {
-        return new Source("", "config/form_display/tabs_bottom.twig", "C:\\UwAmp\\phpapps\\phpmyadmin\\templates\\config\\form_display\\tabs_bottom.twig");
+        return new Source("", "config/form_display/tabs_bottom.twig", "C:\\Users\\pg66hua\\Documents\\GitHub\\GesProj2-Imprimante-AGM\\Morgan\\UwAmp\\phpapps\\phpmyadmin\\templates\\config\\form_display\\tabs_bottom.twig");
     }
 }
