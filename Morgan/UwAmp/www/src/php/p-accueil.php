@@ -114,6 +114,6 @@ echo("</pre>");
 $_SESSION["form"] = 1;
 ?>
 <html>
-<a href="form.php">formulaire</a>
+<a href="p-form.php">formulaire</a>
 
 </html>

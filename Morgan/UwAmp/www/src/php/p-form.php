@@ -38,8 +38,6 @@ echo("<pre>");
 
    case 1:
       ?>
-
-
          <form action="verif.php" method="post">
 
 
@@ -70,9 +68,14 @@ echo("<pre>");
             <input type="number" name="length" id="length" placeholder="000">
             <label for="with">Largeur</label>
             <input type="number" name="with" id="with" placeholder="000">
-            <label for="depth">Profondeur</label>
-            <input type="number" name="depth" id="depth" placeholder="000">
+            <label for="height">Hauteur</label>
+            <input type="number" name="height" id="height" placeholder="000">
      
+            <br>
+            <label for="speed">Vitesse</label>
+            <input type="number" name="speed" id="speed" placeholder="000">
+               
+
             <br>
             <label for="weight">Poid</label>
             <input type="number" name="weight" id="weight" placeholder="000">
@@ -99,28 +102,12 @@ echo("<pre>");
             <button type="submit" class="btn-submit">Ajouter</button>
             <button type="reset" class="btn-clear">Supprimer</button>
  
-         </form>
-
-
-
-
-
-
-
-
-
+               </form>
 
       <?php
       break;
 
    }
-
-
-
-
-
-
-
 
       /*
       echo("<pre>");
