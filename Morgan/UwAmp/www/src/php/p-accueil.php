@@ -10,7 +10,7 @@ session_start();
 require("Database.php");
 
 $db = new Database();
-$fabriquants = $db->getAllFabrquand();
+$fabriquants = $db->getAllFabriquand();
 $testNom = $db->nameFiltre("a");
 $models = $db->getAllModels();
 
@@ -111,7 +111,9 @@ var_dump($models);
 echo("</pre>");
 */
 //<a href="filtres.php">retour menu</a>
+$_SESSION["form"] = 1;
 ?>
 <html>
+<a href="p-form.php">formulaire</a>
 
 </html>

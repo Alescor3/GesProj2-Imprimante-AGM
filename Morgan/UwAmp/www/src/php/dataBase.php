@@ -38,6 +38,8 @@ class Database {
         return $req;
    }
 
+
+
    
      // ---------------- retourne les donnees de la base sql pour qu'elles soient utilisablees ----------------//
    private function formatData($req){
@@ -80,7 +82,7 @@ class Database {
 
 
      // ---------------- retourne tout les profs de la table t_teacher ----------------//
-   public function getAllFabrquand(){
+   public function getAllFabriquand(){
 
         $req = $this->querySimpleExecute('select idFabriquant, fabNom from t_fabriquant');
         $result = $this->formatData($req);
@@ -90,18 +92,45 @@ class Database {
    //---------------- cherche toutes les données sur un prof ----------------//
    public function getOneTeacher($id){
 
-     $req = $this->querySimpleExecute("select * from t_teacher where idTeacher = $id");
-     $teacher = $this->formatData($req);
-     if (count($teacher) === 1) {
-          return $teacher[0];
+          $req = $this->querySimpleExecute("select * from t_teacher where idTeacher = $id");
+          $teacher = $this->formatData($req);
+          if (count($teacher) === 1) {
+               return $teacher[0];
+          }
      }
-   }
+     
+     public function getAllModels(){
+          $req = $this->querySimpleExecute("SELECT `impModele` FROM `t_imprimante` ORDER BY `impModele`");
+          $result = $this->formatData($req);
+          return $result;
+     }
+   
 
 
-   public function getAllModels(){
-     $req = $this->querySimpleExecute("SELECT `impModele` FROM `t_imprimante` ORDER BY `impModele`");
-     $result = $this->formatData($req);
-     return $result;
-   }
+   public function createPrinter($Values){
+     $binds = [];
+     echo("<pre>");
+/*
+     var_dump($Values);
+     echo("<pre>");
+*/
+          $test = 0;
+          $binds["priceNow"] = array();
+          $binds["priceNow"]["value"] = $Values["price"];
+          $binds["priceNow"]["type"] = PDO::PARAM_INT;
+     foreach($Values as $id => $value){
+          $test++;
+          $binds[$id] = array();
+          $binds[$id]["value"] = $value;
+          $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
+          
+     }
+     echo($test);
+     $query = "INSERT INTO `t_imprimante`(`idImprimante`, `impHauteur`, `impLargeur`, `impProfondeur`, `impPoids`, `impModele`, `impNom`, `impVitesse`, `impRectoVerso`, `impBacPapier`, `impResolutionImpression`, `impResolutionNumerisation`, `impDisponibilite`, `impPrix`, `impPrixInitial`, `idFabriquant`) 
+     VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,:disponibility,:priceNow,:price,:fabriquant)";
+     $this->queryPrepareExecute($query, $binds);
+}
+
+
 
 }
