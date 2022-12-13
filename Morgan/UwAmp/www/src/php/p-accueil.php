@@ -51,8 +51,8 @@ echo("<pre>");
             <option value="100" class="listeDeroulante"> 100cm + </option>
          </select>
 
-         <select name="longeur" id="longeur">
-            <option value="" class="listeDeroulante">---Longeur---</option>
+         <select name="largeur" id="largeur">
+            <option value="" class="listeDeroulante">---largeur---</option>
             <option value="0" class="listeDeroulante"> 0 - 25cm </option>
             <option value="25" class="listeDeroulante"> 25 - 50cm </option>
             <option value="50" class="listeDeroulante"> 50 - 75cm </option>

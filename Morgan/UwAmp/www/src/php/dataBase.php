@@ -136,6 +136,60 @@ class Database {
      }
   
 
+     public function GetPrinterWithFiltre($filtre){
+
+          $value = 0;
+          $binds = [];
+          $query = ("SELECT * FROM `t_imprimante` WHERE");
+          foreach($filtre as $id => $type){
+
+                    
+                    $binds[$id] = array();
+                    $binds[$id]["value"] = $type;
+                    if($value >= 1){
+                         $query .= " AND ";
+                    }
+                    if($type != ""){
+                         echo($type . "<br>");
+
+                         switch($id){
+                              case "model":
+                                   $query .="`impModele` =:model";
+                                   $value ++;
+                                   break;
+                              case "prixMax":
+                                   $query .="`impPrix` <:prixMax";
+                                   $value ++;
+                                   break;
+                              case "hauteur":
+                                   $query .="`impHauteur` <:hauteur";
+                                   $value ++;
+                              break;              
+                              case "largeur":
+                                   $query .="`impLargeur` <:largeur";
+                                   $value ++;
+                                   break;
+                              case "profondeur":
+                                   $query .="`impHauteur` <:profondeur";
+                                   $value ++;
+                                   break;                                                          
+                              }
+                              if($id == "prixMax" ||$id == "hauteur" ||$id == "longeur" ||$id == "profondeur")
+                                   $binds[$id]["type"] = PDO::PARAM_INT;
+                              else
+                              $binds[$id]["type"] = PDO::PARAM_INT;
+
+                    }
+               }
+
+          echo($query);
+          /*
+          $req = $this->queryPrepareExecute($query, $binds);
+          $result = $this->formatData($req);
+
+          return $result;*/
+
+     }
 
 
 
