@@ -92,22 +92,22 @@ class Database {
    //---------------- cherche toutes les données sur un prof ----------------//
    public function getOneTeacher($id){
 
-     $req = $this->querySimpleExecute("select * from t_teacher where idTeacher = $id");
-     $teacher = $this->formatData($req);
-     if (count($teacher) === 1) {
-          return $teacher[0];
+          $req = $this->querySimpleExecute("select * from t_teacher where idTeacher = $id");
+          $teacher = $this->formatData($req);
+          if (count($teacher) === 1) {
+               return $teacher[0];
+          }
      }
-   }
+     
+     public function getAllModels(){
+          $req = $this->querySimpleExecute("SELECT `impModele` FROM `t_imprimante` ORDER BY `impModele`");
+          $result = $this->formatData($req);
+          return $result;
+     }
+   
 
 
-   public function getAllModels(){
-     $req = $this->querySimpleExecute("SELECT `impModele` FROM `t_imprimante` ORDER BY `impModele`");
-     $result = $this->formatData($req);
-     return $result;s
-   }
-
-
-   public function createRecipe($Values){
+   public function createPrinter($Values){
      $binds = [];
      echo("<pre>");
 /*

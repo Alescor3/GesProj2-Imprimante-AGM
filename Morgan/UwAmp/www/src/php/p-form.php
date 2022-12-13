@@ -38,8 +38,6 @@ echo("<pre>");
 
    case 1:
       ?>
-
-
          <form action="verif.php" method="post">
 
 
@@ -104,28 +102,12 @@ echo("<pre>");
             <button type="submit" class="btn-submit">Ajouter</button>
             <button type="reset" class="btn-clear">Supprimer</button>
  
-         </form>
-
-
-
-
-
-
-
-
-
+               </form>
 
       <?php
       break;
 
    }
-
-
-
-
-
-
-
 
       /*
       echo("<pre>");
