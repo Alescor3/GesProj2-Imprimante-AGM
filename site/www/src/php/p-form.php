@@ -35,15 +35,25 @@ echo("<pre>");
 
 <?php
    switch($form){
-
    case 1:
+      if(isset($_SESSION["valueForm"])){
+         $valueForm = $_SESSION["valueForm"];
+      }
+
       ?>
          <form action="verif.php" method="post">
 
 
             <br>
             <label for="name">Nom</label>
-            <input type="text" name="name" id="name" placeholder="Aaaa">
+            
+            <?php
+               if(isset($_SESSION["valueForm"])){
+                  echo("<input type='text' name='name' id='name' placeholder='Aaaa' value ='" . $_SESSION["valueForm"]["string"] . "'>");
+               }else{
+                  echo("<input type='text' name='name' id='name' placeholder='Aaaa'>");
+               }
+            ?>
 
             <br>
             <label for="model">Model</label>
@@ -109,11 +119,11 @@ echo("<pre>");
 
    }
 
-      /*
+      
       echo("<pre>");
-      var_dump($models);
+      var_dump($_SESSION);
       echo("</pre>");
-      */
+      
       //<a href="filtres.php">retour menu</a>
    ?>
 </html>

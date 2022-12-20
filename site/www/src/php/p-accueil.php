@@ -13,8 +13,8 @@ $db = new Database();
 $fabriquants = $db->getAllFabriquand();
 $testNom = $db->nameFiltre("a");
 $models = $db->getAllModels();
-
-
+$_SESSION["printer"] = $db->getAllImprimante();
+$printerList = $_SESSION["printer"];
 /*
 echo("<pre>");
 var_dump($_SESSION);
@@ -51,8 +51,8 @@ echo("<pre>");
             <option value="100" class="listeDeroulante"> 100cm + </option>
          </select>
 
-         <select name="longeur" id="longeur">
-            <option value="" class="listeDeroulante">---Longeur---</option>
+         <select name="largeur" id="largeur">
+            <option value="" class="listeDeroulante">---largeur---</option>
             <option value="0" class="listeDeroulante"> 0 - 25cm </option>
             <option value="25" class="listeDeroulante"> 25 - 50cm </option>
             <option value="50" class="listeDeroulante"> 50 - 75cm </option>
@@ -105,11 +105,42 @@ echo("<pre>");
 
 
 <?php
-/*
+
+
+
+foreach($printerList as $printer){
+   echo($printer["impNom"] . "<br>");
+   echo($printer["impModele"] . "<br>");
+   foreach($db->getOneFabriquand($printer["idFabriquant"]) as $id=>$value){
+      if($id != "idFabriquant")
+         echo($value . "<br>");
+   }
+   echo($printer["impPrix"] . ".-<br>");
+   echo($printer["impPoids"] . " Kg<br>");
+   echo($printer["impHauteur"] . " cm<br>");
+   echo($printer["impLargeur"] . " cm<br>");
+   echo($printer["impProfondeur"] . " cm<br>");
+   echo($printer["impVitesse"] . "ppm<br>");
+   echo($printer["impBacPapier"] . "pages<br>");
+   echo($printer["impResolutionImpression"] . "<br>");
+   echo($printer["impResolutionNumerisation"] . "<br>");
+   if($printer["impDisponibilite"] = 1){
+      echo("disponible<br>");
+   }else{
+      echo("indisponible<br>");
+   }
+   echo($printer["impResolutionNumerisation"] . "<br>");
+
+   echo("<br>");
+}
+
+
+
+
 echo("<pre>");
-var_dump($models);
+var_dump($printerList);
 echo("</pre>");
-*/
+
 //<a href="filtres.php">retour menu</a>
 $_SESSION["form"] = 1;
 ?>
