@@ -10,6 +10,11 @@ var_dump($value);
 echo("</pre>");
 $db = new Database();
 
+if($_POST["recotverso"] == "on")
+    $_POST["recotverso"] = 1;
+else
+    $_POST["recotverso"] = 0;
+
 foreach($value as $id => $value){
     if($value == ""){
         $nberror++;

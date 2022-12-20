@@ -123,9 +123,9 @@ class Database {
           $binds[$id]["type"] = PDO::PARAM_STR_CHAR;
           
      }
-     echo($test);
+     echo(count($binds));
      $query = "INSERT INTO `t_imprimante`(`idImprimante`, `impHauteur`, `impLargeur`, `impProfondeur`, `impPoids`, `impModele`, `impNom`, `impVitesse`, `impRectoVerso`, `impBacPapier`, `impResolutionImpression`, `impResolutionNumerisation`, `impDisponibilite`, `impPrix`, `impPrixInitial`, `idFabriquant`) 
-     VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,:disponibility,:priceNow,:price,:fabriquant)";
+     VALUES (DEFAULT,:height,:with,:length,:weight,:model,:name,:speed,:recotverso,:papercapacity,:printSize,:scanSize,1,:priceNow,:price,:fabriquant)";
      $this->queryPrepareExecute($query, $binds);
      }
      public function getAllImprimante(){
@@ -158,23 +158,29 @@ class Database {
                                    $value ++;
                                    break;
                               case "prixMax":
-                                   $query .="`impPrix` <:prixMax";
+                                   if($filtre["prixMin"] === "max"){
+                                        $query .="`impPrix` <= MAX(`impPrix`)";
+                                        unset($binds[$id])
+                                   }
+                                   else{
+                                        $query .="`impPrix` <= :prixMax AND `impPrix` >= :prixMin";
+                                   }
                                    $value ++;
                                    break;
                               case "hauteur":
-                                   $query .="`impHauteur` <:hauteur";
+                                   $query .="`impHauteur` <= :hauteur";
                                    $value ++;
                               break;              
                               case "largeur":
-                                   $query .="`impLargeur` <:largeur";
+                                   $query .="`impLargeur` <= :largeur";
                                    $value ++;
                                    break;
                               case "profondeur":
-                                   $query .="`impHauteur` <:profondeur";
+                                   $query .="`impHauteur` <= :profondeur";
                                    $value ++;
                                    break;                                                          
                               }
-                              if($id == "prixMax" ||$id == "hauteur" ||$id == "longeur" ||$id == "profondeur")
+                              if($id == "prixMax" ||$id == "hauteur" ||$id == "longeur" ||$id == "profondeur" || $id == "prixMin")
                                    $binds[$id]["type"] = PDO::PARAM_INT;
                               else
                               $binds[$id]["type"] = PDO::PARAM_INT;
@@ -182,12 +188,10 @@ class Database {
                     }
                }
 
-          echo($query);
-          /*
           $req = $this->queryPrepareExecute($query, $binds);
           $result = $this->formatData($req);
 
-          return $result;*/
+          return $result;
 
      }
 

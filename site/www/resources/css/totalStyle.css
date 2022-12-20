@@ -1,0 +1,52 @@
+body{
+    text-align: center;
+    color: white;
+    background: no-repeat center center fixed;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.listImp{
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+    color: rgb(53, 45, 45);
+    text-align: center;
+}
+
+.filtre{
+    display: flex;
+    flex-direction: column;
+}
+
+ul{
+    padding-left: 44%;
+    margin: 1%;
+    list-style-type: none;
+    text-align: left;
+}
+
+h4, h5{
+    margin: 0%;
+}
+#fond{
+    background-image: url(../../userContent/images/fond.jpg);
+    background-size: cover;
+}
+
+footer {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    bottom:0;
+    width:100%;
+    background-color: beige;
+}
+main {
+    min-height:100%;
+    position:relative;
+    padding-bottom:2%;
+}
